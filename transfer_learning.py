@@ -98,7 +98,7 @@ val_acc = history.history['val_accuracy']
 loss = history.history['loss']
 val_loss = history.history['val_loss']
 
-model.save('C:/Users/sadba/OneDrive/Masaüstü/YL_courses/pattern/HW_2/cats_and_dogs_classifier_base.keras')
+model.save('cats_and_dogs_classifier_base.keras')
 
 plt.figure(figsize=(8, 8))
 plt.subplot(2, 1, 1)
@@ -172,7 +172,7 @@ val_acc += history_fine.history['val_accuracy']
 loss += history_fine.history['loss']
 val_loss += history_fine.history['val_loss']
 
-model.save('C:/Users/sadba/OneDrive/Masaüstü/YL_courses/pattern/HW_2/cats_and_dogs_classifier_finetune.keras')
+model.save('cats_and_dogs_classifier_finetune.keras')
 
 plt.figure(figsize=(8, 8))
 plt.subplot(2, 1, 1)
