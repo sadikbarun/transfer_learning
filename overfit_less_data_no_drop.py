@@ -24,7 +24,7 @@ validation_dataset = tf.keras.utils.image_dataset_from_directory(validation_dir,
                                                                  image_size=IMG_SIZE)
 
 # Eğitim verilerini sınırla (Overfitting için küçük bir subset alıyoruz)
-train_dataset = train_dataset.take(50)  # Sadece 50 örnek kullanılıyor
+train_dataset = train_dataset.take(50)  # 50 örnek kullanılıyor
 
 # Test veri setini ayır
 val_batches = tf.data.experimental.cardinality(validation_dataset)
@@ -37,7 +37,6 @@ train_dataset = train_dataset.prefetch(buffer_size=AUTOTUNE)
 validation_dataset = validation_dataset.prefetch(buffer_size=AUTOTUNE)
 test_dataset = test_dataset.prefetch(buffer_size=AUTOTUNE)
 
-# Veri artırmayı devre dışı bırak (Overfitting için gerekli)
 # data_augmentation = tf.keras.Sequential([]) # Veri artırma kullanılmıyor
 
 preprocess_input = tf.keras.applications.mobilenet_v2.preprocess_input
@@ -104,7 +103,7 @@ plt.show()
 loss, accuracy = model.evaluate(validation_dataset)
 print('Validation accuracy :', accuracy)
 
-# Test veri seti üzerinde tahmin yap
+# Test veri seti prediction
 image_batch, label_batch = test_dataset.as_numpy_iterator().next()
 predictions = model.predict_on_batch(image_batch).flatten()
 predictions = tf.where(predictions < 0.5, 0, 1)
